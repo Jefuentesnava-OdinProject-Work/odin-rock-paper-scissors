@@ -16,6 +16,7 @@ function singleRound(playerSelection, getComputerChoice){
     let result = '';
     console.log('Player Choice: ' + playerSelection);
     console.log('Computer Choice: ' + getComputerChoice);
+    console.log('\n');
     if(playerSelection === getComputerChoice){
         return result = 'No Winner. It\'s a tie';
     }
