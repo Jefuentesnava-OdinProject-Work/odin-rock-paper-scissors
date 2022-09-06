@@ -1,12 +1,17 @@
-let playerSelection = prompt("Enter: Rock, Paper, or Scissors. ");
-playerSelection = playerSelection.toLowerCase();
+// Get user selection
+function getPlayerChoice(){ 
+    let playerSelection = prompt("Enter: Rock, Paper, or Scissors. ");
+    return playerSelection = playerSelection.toLowerCase();
+}
 
+// select computer choice
 function getComputerChoice(){
     const choices = ['rock','paper','scissors']
     let choice = choices[Math.floor(Math.random() * 3)];
     return choice;
 }
 
+// compare player and computer choice and determine winner or tie
 function singleRound(playerSelection, getComputerChoice){
     let result = '';
     console.log('Player Choice: ' + playerSelection);
@@ -40,18 +45,31 @@ function singleRound(playerSelection, getComputerChoice){
     }
 }
 
+// play 5 rounds
+function game(){
+    let playerWin = 0;
+    let computerWin = 0;
+    let roundResult = '';
 
-console.log(singleRound(playerSelection, getComputerChoice()));
+    for(let i = 0; i < 5 ; i++){
+        roundResult = singleRound(getPlayerChoice(), getComputerChoice());
+        if(roundResult === "Player Wins"){
+            playerWin++;
+        }
+        else if(roundResult === 'Computer Wins'){
+            computerWin++;
+        }
+    }
 
+    if(playerWin > computerWin){
+        console.log('Player won the battle.');
+    }
+    else if( playerWin < computerWin){
+        console.log('Computer won the battle');
+    }
+    else{
+        console.log('The battle rages on');
+    }
+}
 
-
-// getComputerChoice();
-
-/* 
-    Game Pseudocode
-
-    /function computerChoice
-    select a choice between 'rock', 'paper', or 'scissors'
-    return that value
-
- */ 
+game();
